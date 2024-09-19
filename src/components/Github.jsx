@@ -1,17 +1,20 @@
 import React,{useEffect, useState} from 'react'
+import { useLoaderData } from 'react-router-dom'
 
 function Github() {
-    const [data,setData]=useState(0)
+    const data = useLoaderData()
 
-    useEffect(() => {
-        fetch('https://api.github.com/users/stefanbinoj')
-        .then(response => response.json())
-        .then(jsonData=>{
-            console.log(jsonData)
-            setData(jsonData)
-        })
+    // const [data,setData]=useState(0)
+
+    // useEffect(() => {
+    //     fetch('https://api.github.com/users/stefanbinoj')
+    //     .then(response => response.json())
+    //     .then(jsonData=>{
+    //         console.log(jsonData)
+    //         setData(jsonData)
+    //     })
      
-    }, [])
+    // }, [])
     
   return (
     <div className='text-center w-1/2 self-center ml-auto mr-auto flex m-20 text-slate-gray justify-center gap-8 p-10  bg-gray-500 rounded-3xl'>
@@ -31,3 +34,9 @@ function Github() {
 }
 
 export default Github
+
+export const githubInfo = async()=>{
+    res=fetch('https://api.github.com/users/stefanbinoj')
+    return res.json()
+
+}
